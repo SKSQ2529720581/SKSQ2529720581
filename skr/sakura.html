@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        
+        #dv {
+            position: relative;
+            width: 960px;
+            height: 720px;
+            background: url("960_720bg.png");
+            padding: 0;
+            overflow: hidden;
+            margin: 0px auto;
+            text-align: center;
+            line-height: 720px;
+        }
+        
+        #dv:hover::after {
+            transition: all 5s;
+            margin-top: 0;
+        }
+        
+        #dv:after {
+            content: '还是很喜欢你，就像风吹了几万里';
+            color: rgb(219, 80, 173);
+            font-size: 35px;
+            display: inline-block;
+            position: relative;
+            margin-top: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="dv"></div>
+    <script>
+        var dv = document.getElementById("dv");
+        document.getElementById("dv").onclick = function() {
+            setInterval(function() {
+                var skr = document.createElement('div');
+                skr.style.cssText = "perspective:" + Math.round((Math.random() * 100) + 100) + "px;" + "position: absolute;background: url('" + (Math.round(Math.random() * 9) + 1) + ".png');background-repeat: no-repeat;" + "background-size:" + Math.round((Math.random() * 20) + 10) + "%;";
+                // skr.style.perspective = Math.round((Math.random() * 100) + 100) + 'px';
+                skr.style.width = '138px';
+                skr.style.height = '104px';
+                // skr.style.transform = 'scale(' + Math.round((Math.random() * 2) + 2) / 10 + ')';
+
+                var lefts = Math.round(Math.random() * 960) - 50;
+                var tops = -40;
+                skr.style.left = lefts + "px";
+                skr.style.top = tops + "px";
+
+                dv.appendChild(skr);
+
+                var x = Math.round((Math.random() * 3) - 1);
+                var y = Math.round((Math.random() * 3) + 3);
+                //位置偏移量
+                var xdeg = 1;
+                //旋转偏移量
+                var rdeg = 0;
+                setInterval(function() {
+                    skr.style.left = lefts + "px";
+                    skr.style.top = tops + "px";
+                    skr.style.transform = 'rotateX(' + rdeg + 'deg)';
+
+                    rdeg += xdeg;
+                    lefts += x;
+                    tops += y;
+                    if (tops > 700 || lefts < -50 || lefts > 910) {
+                        //逸出边界（下左右）（数值非精细）
+                        dv.removeChild(skr);
+                    }
+
+                }, 20);
+            }, 50);
+
+        }
+    </script>
+</body>
+
+</html>
