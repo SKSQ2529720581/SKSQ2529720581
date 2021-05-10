@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>redpoint</title>
+    <style>
+        .main {
+            width: 100px;
+            height: 40px;
+            overflow: hidden;
+        }
+        
+        .main:hover {
+            width: 400px;
+            height: 220px;
+            transition: all 0.5s;
+        }
+        
+        .main:hover .bos {
+            transition: all 0.5s;
+        }
+        
+        .box {
+            width: 100px;
+            height: 40px;
+            background: rgb(51, 51, 51);
+            position: relative;
+            line-height: 40px;
+            text-align: center;
+        }
+        
+        .bos {
+            width: 400px;
+            height: 180px;
+            background: rgb(51, 51, 51);
+            position: relative;
+        }
+        
+        .box:hover .rp {
+            background: transparent;
+            transition: all 0.5s;
+        }
+        
+        .sl {
+            color: #aaa;
+            position: relative;
+        }
+        
+        .rp {
+            border-radius: 3px;
+            height: 6px;
+            width: 6px;
+            background: red;
+            display: inline-block;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="box">
+            <div class="sl">
+                网站实例
+            </div>
+            <div class="rp"></div>
+        </div>
+        <div class="bos">
+
+        </div>
+    </div>
+
+</body>
+
+</html>
